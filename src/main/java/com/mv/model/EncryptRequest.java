@@ -4,9 +4,18 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
+/**
+ * Encrypt request class.
+ * 
+ * @author 2220832
+ *
+ */
 @Data
 public class EncryptRequest {
 
-	@NotNull
-	private String value;
+  /**
+   * Value to encrypt.
+   */
+  @NotNull
+  private String value;
 }

@@ -4,8 +4,17 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
+/**
+ * Decrypt response class
+ * 
+ * @author 2220832
+ *
+ */
 @Builder
 public class DecryptResponse {
 
-	private String decryptedValue;
+  /**
+   * Decrypted value.
+   */
+  private String decryptedValue;
 }

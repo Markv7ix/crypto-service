@@ -21,19 +21,34 @@ import com.mv.service.CryptoService;
 import com.mv.util.CryptoUtil;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Crypto service implementation class.
+ * 
+ * @author 2220832
+ *
+ */
 @Slf4j
 @Service
 public class CryptoServiceImpl implements CryptoService {
 
+  /**
+   * Crypto configuration instance.
+   */
   @Autowired
   private CryptoConfig cryptoConfig;
 
+  /**
+   * {@inheritdoc}
+   */
   @Override
-  public RetrieveKeyResponse getKey() {
+  public RetrieveKeyResponse retrieveKey() {
     return RetrieveKeyResponse.builder().key(cryptoConfig.getEncryptionKey())
         .algorithm(cryptoConfig.getAlgorithm()).build();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   @Override
   public EncryptResponse encrypt(EncryptRequest request) {
 
@@ -58,6 +73,9 @@ public class CryptoServiceImpl implements CryptoService {
 
   }
 
+  /**
+   * {@inheritdoc}
+   */
   @Override
   public DecryptResponse decrypt(DecryptRequest request) {
     String encryptedValue = request.getEncryptedValue();
