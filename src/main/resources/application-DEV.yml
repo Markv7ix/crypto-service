@@ -1,0 +1,19 @@
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.mv: DEBUG
+  
+
+crypto-service:
+  config:
+    crypto:
+      encryption-key: d378389666ad040a52a5f3b5d8a5429e928c18db3fd5bbb87af0efbcf21bfcd0
+      iv: 8f3e892915d8dd4f14743948a68d6f60
+      algorithm: AES/CBC/PKCS5Padding
+    path:
+      retrieveKey:
+        url: /crypto/key
+      encryption:
+        url: /crypto/encrypt
+      decryption:
+        url: /crypto/decrypt

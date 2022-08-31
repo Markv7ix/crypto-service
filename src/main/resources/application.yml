@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: crypto-service
+  profiles:
+    active:
+    - DEV
+
+server:
+  port: 8089
+  
