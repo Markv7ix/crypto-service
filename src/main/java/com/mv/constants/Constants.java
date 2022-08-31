@@ -1,6 +1,19 @@
 package com.mv.constants;
 
-public interface Constants {
+/**
+ * Constants class.
+ * 
+ * @author 2220832
+ *
+ */
+public class Constants {
 
-	public static final String AES = "AES";
+  /**
+   * AES const.
+   */
+  public static final String AES = "AES";
+  
+  private Constants() {
+    
+  }
 }

@@ -19,71 +19,79 @@ import com.mv.service.CryptoService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Controller class for encryption-sevice
+ * 
+ * @author 2220832
+ *
+ */
 @Slf4j
 @RestController
 @RequestMapping("/api")
 public class CryptoController {
 
-	/**
-	 * Crypto service instance.
-	 */
-	@Autowired
-	private CryptoConfig cryptoConfig;
-	
-	/**
-	 * Crypto service instance.
-	 */
-	@Autowired
-	private CryptoService cryptoService;
+  /**
+   * Crypto configuration instance.
+   */
+  @Autowired
+  private CryptoConfig cryptoConfig;
 
-	/**
-	 * Retrieve key controller method.
-	 * 
-	 * @return
-	 */
-	@GetMapping(path="${crypto-service.config.path.retrieveKey.url}")
-	public ResponseEntity<RetrieveKeyResponse> retrieveKey() {
+  /**
+   * Crypto service instance.
+   */
+  @Autowired
+  private CryptoService cryptoService;
 
-		log.debug("Retrieve key request");
-		RetrieveKeyResponse response = cryptoService.getKey();
+  /**
+   * Retrieve key controller method.
+   * 
+   * @return ResponseEntity<RetrieveKeyResponse> response object.
+   */
+  @GetMapping(path = "${crypto-service.config.path.retrieveKey.url}")
+  public ResponseEntity<RetrieveKeyResponse> retrieveKey() {
 
-		log.debug("Retrieve key response: {}", response);
+    log.debug("Retrieve key request");
+    RetrieveKeyResponse response = cryptoService.retrieveKey();
 
-		return ResponseEntity.ok(response);
-	}
+    log.debug("Retrieve key response: {}", response);
 
-	/**
-	 * 
-	 * @return
-	 */
-	@PostMapping(path="${crypto-service.config.path.encryption.url}")
-	public ResponseEntity<EncryptResponse> encrypt(@Valid @RequestBody EncryptRequest request) {
+    return ResponseEntity.ok(response);
+  }
 
-		log.debug("Encrypt request: {}", request);
+  /**
+   * Encrypt controller method.
+   * 
+   * @param request Body request
+   * @return ResponseEntity<EncryptResponse> response object
+   */
+  @PostMapping(path = "${crypto-service.config.path.encryption.url}")
+  public ResponseEntity<EncryptResponse> encrypt(@Valid @RequestBody EncryptRequest request) {
 
-		EncryptResponse response = cryptoService.encrypt(request);
+    log.debug("Encrypt request: {}", request);
 
-		log.debug("Encrypt response: {}", response);
+    EncryptResponse response = cryptoService.encrypt(request);
 
-		return ResponseEntity.ok(response);
-	}
+    log.debug("Encrypt response: {}", response);
 
-	/**
-	 * Decryption controller method.
-	 * 
-	 * @param request
-	 * @return
-	 */
-	@PostMapping(path="${crypto-service.config.path.decryption.url}")
-	public ResponseEntity<DecryptResponse> decrypt(@Valid @RequestBody DecryptRequest request) {
+    return ResponseEntity.ok(response);
+  }
 
-		log.debug("Decrypt request: {}", request);
+  /**
+   * Decryption controller method.
+   * 
+   * @param request Request body
+   * @return ResponseEntity<EncryptResponse> response object
+   */
+  @PostMapping(path = "${crypto-service.config.path.decryption.url}")
+  public ResponseEntity<DecryptResponse> decrypt(@Valid @RequestBody DecryptRequest request) {
 
-		DecryptResponse response = cryptoService.decrypt(request);
+    log.debug("Decrypt request: {}", request);
 
-		log.debug("Decrypt response: {}", response);
+    DecryptResponse response = cryptoService.decrypt(request);
 
-		return ResponseEntity.ok(response);
-	}
+    log.debug("Decrypt response: {}", response);
+
+    return ResponseEntity.ok(response);
+  }
 
 }

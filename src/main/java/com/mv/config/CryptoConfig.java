@@ -7,16 +7,31 @@ import org.springframework.context.annotation.Configuration;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Configuration class.
+ * 
+ * @author 2220832
+ *
+ */
 @Getter
 @Setter
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix="crypto-service.config.crypto")
+@ConfigurationProperties(prefix = "crypto-service.config.crypto")
 public class CryptoConfig {
 
-	private String encryptionKey;
-	
-	private String iv;
-	
-	private String algorithm;
+  /**
+   * Encryption key.
+   */
+  private String encryptionKey;
+
+  /**
+   * Initailization vector.
+   */
+  private String iv;
+
+  /**
+   * Algorithm.
+   */
+  private String algorithm;
 }
